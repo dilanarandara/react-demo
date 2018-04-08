@@ -1,1 +1,2 @@
-This is a react demo project for http://dilanarandara.blogspot.com/
+# react-demo
+This is a demo project for blog posts written in http://dilanarandara.blogspot.com/
