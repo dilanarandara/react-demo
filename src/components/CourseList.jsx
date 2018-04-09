@@ -1,4 +1,9 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment} from 'react'
+import {connect} from 'react-redux';
+
+const mapToProps = ({
+    courses
+}, router) => ({courses, router});
 
 class CourseList extends Component {
     render() {
@@ -9,22 +14,19 @@ class CourseList extends Component {
                         <div className="col-sm-4">Course Name</div>
                         <div className="col-sm-6">Description</div>
                     </div>
-                    <div className="row">
-                        <div className="col-sm-4">Statistics</div>
-                        <div className="col-sm-6">Statistics Description</div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-4">Human Expertise</div>
-                        <div className="col-sm-6">Human Expertise Description</div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-4">Computer Science</div>
-                        <div className="col-sm-6">Computer Science Description</div>
-                    </div>
+                    {this
+                        .props
+                        .courses
+                        .map((course, i) => 
+                            <div key={i} className="row">
+                                <div className="col-sm-4">{course.name}</div>
+                                <div className="col-sm-6">{course.description}</div>
+                            </div>
+                        )}
                 </div>
             </Fragment>
         );
     }
 }
 
-export default CourseList;
+export default connect(mapToProps, null)(CourseList);
